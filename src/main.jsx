@@ -1,27 +1,27 @@
 import { StyleSheet, View } from "react-native";
-import Constants from "expo-constants";
 import RepositoryList from "./components/RepositoryList";
-import Text from "./components/Text";
+import AppBar from "./components/AppBar";
+import theme from "./theme";
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Constants.statusBarHeight,
-    flexGrow: 1,
-    flexShrink: 1,
+    flex: 1,
+    backgroundColor: theme.colors.surface,
   },
   text: {
-    color: "purple",
-    fontSize: 24,
+    color: theme.colors.onSurface,
+    fontSize: 20,
     fontWeight: "700",
+  },
+  flex: {
+    flexDirection: "row",
   },
 });
 
 const Main = () => {
   return (
-    <View style={styles.container}>
-      <Text color="textSecondary" fontSize="subheading">
-        Rate Repository App
-      </Text>
+    <View style={[styles.text]}>
+      <AppBar />
       <RepositoryList />
     </View>
   );
