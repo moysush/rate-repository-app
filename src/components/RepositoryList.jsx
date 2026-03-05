@@ -1,4 +1,4 @@
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 
 const repositories = [
@@ -58,13 +58,11 @@ const repositories = [
 
 const RepositoryList = () => {
   return (
-    <View>
-      <FlatList
-        data={repositories}
-        renderItem={({ item }) => <RepositoryItem data={item} />}
-        keyExtractor={(item) => item.id}
-      />
-    </View>
+    <FlatList
+      data={repositories}
+      renderItem={({ item }) => <RepositoryItem data={item} />}
+      keyExtractor={(item) => item.id}
+    />
   );
 };
 

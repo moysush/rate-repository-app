@@ -6,6 +6,13 @@ import {
 import Main from "./src/main";
 import theme from "./src/theme";
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: theme.colors.surfaceVariant,
+  },
+});
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -15,9 +22,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.colors.surface,
-  },
-});

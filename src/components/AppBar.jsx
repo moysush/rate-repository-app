@@ -1,5 +1,6 @@
 import Constants from "expo-constants";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, View, Pressable } from "react-native";
+import Text from "./Text";
 import theme from "../theme";
 
 const styles = StyleSheet.create({
@@ -15,11 +16,6 @@ const styles = StyleSheet.create({
     // marginRight: 16,
     // paddingVertical: 12,
   },
-  text: {
-    color: theme.colors.appBarText,
-    fontSize: theme.fontSizes.title,
-    fontWeight: theme.fontWeights.medium,
-  },
 });
 
 const AppBarTab = ({ title }) => {
@@ -27,7 +23,9 @@ const AppBarTab = ({ title }) => {
     <Pressable
       style={({ pressed }) => [styles.tab, { opacity: pressed ? 0.7 : 1 }]}
     >
-      <Text style={styles.text}>{title}</Text>
+      <Text color="surface" fontWeight="bold" fontSize="title">
+        {title}
+      </Text>
     </Pressable>
   );
 };
