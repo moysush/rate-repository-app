@@ -1,10 +1,7 @@
-import {
-  StatusBar,
-  StyleSheet,
-  View,
-} from "react-native";
+import { StatusBar, StyleSheet, View } from "react-native";
 import Main from "./src/main";
 import theme from "./src/theme";
+import { NativeRouter } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,9 +13,15 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={theme.colors.appBarBackground} barStyle="light-content" />
-      <Main />
+      <NativeRouter
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
+        <Main />
+      </NativeRouter>
+      <StatusBar
+        backgroundColor={theme.colors.appBarBackground}
+        barStyle="light-content"
+      />
     </View>
   );
 }
-
