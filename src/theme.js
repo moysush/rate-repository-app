@@ -1,25 +1,27 @@
+import { Platform } from "react-native";
+
 const theme = {
   colors: {
     // Brand Colors
-    primary: "#6750A4", // M3 default violet
+    primary: "#6750A4",
     onPrimary: "#FFFFFF",
     primaryContainer: "#EADDFF",
     onPrimaryContainer: "#21005D",
 
     // outline
-    outline: "#79747E", // M3 Outline color
-    error: "#B3261E", // M3 Error color
+    outline: "#79747E",
+    error: "#B3261E",
 
     // Neutral Colors (Surfaces)
     mainbBackground: "#E7E0EC", // Base background for the whole app
     surface: "#FEF7FF",
-    surfaceContainerLow: "#F7F2FA", // Slightly darker for a subtle list background
-    surfaceVariant: "#E7E0EC", // Darker neutral for high contrast
+    // surfaceContainerLow: "#F7F2FA", // Slightly darker for a subtle list background
+    // surfaceVariant: "#E7E0EC", // Darker neutral for high contrast
     onSurface: "#1D1B20", // Main text color
     onSurfaceVariant: "#49454F", // Secondary/hint text
 
-    // Top App Bar Specific (M3 Surface Container)
-    appBarBackground: "#211F26", // Dark theme M3 AppBar
+    // Top App Bar Specific
+    appBarBackground: "#211F26",
     appBarText: "#E6E1E5",
   },
   fontSizes: {
@@ -28,7 +30,11 @@ const theme = {
     title: 22,
   },
   fonts: {
-    main: "System",
+    main: Platform.select({
+      android: "Roboto",
+      ios: "Arial",
+      default: "System",
+    }),
   },
   fontWeights: {
     normal: "400",
