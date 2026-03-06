@@ -2,6 +2,7 @@ import Constants from "expo-constants";
 import { StyleSheet, View, Pressable } from "react-native";
 import Text from "./Text";
 import theme from "../theme";
+import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -18,13 +19,18 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ title }) => {
+const AppBarTab = ({ label, path }) => {
+  const navigate = useNavigate();
   return (
     <Pressable
-      style={({ pressed }) => [styles.tab, { opacity: pressed ? 0.7 : 1 }]}
+      onPress={() => {
+        console.log("pressed", path);
+        navigate(path);
+      }}
+      style={styles.tab}
     >
-      <Text color="surface" fontWeight="bold" fontSize="title">
-        {title}
+      <Text color="surface" fontWeight="bold" fontSize="subheading">
+        {label}
       </Text>
     </Pressable>
   );
@@ -33,7 +39,8 @@ const AppBarTab = ({ title }) => {
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <AppBarTab title="Repositories" />
+      <AppBarTab label="Repositories" path="/" />
+      <AppBarTab label="Sign in" path="/signin" />
     </View>
   );
 };

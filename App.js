@@ -6,7 +6,6 @@ import { NativeRouter } from "react-router-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surfaceVariant,
   },
 });
 
