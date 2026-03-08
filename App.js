@@ -2,6 +2,10 @@ import { StatusBar, StyleSheet, View } from "react-native";
 import Main from "./src/main";
 import theme from "./src/theme";
 import { NativeRouter } from "react-router-native";
+import { ApolloProvider } from "@apollo/client";
+import createApolloClient from "./src/utils/apolloClient";
+
+const apolloClient = createApolloClient();
 
 const styles = StyleSheet.create({
   container: {
@@ -15,7 +19,9 @@ export default function App() {
       <NativeRouter
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
-        <Main />
+        <ApolloProvider client={apolloClient}>
+          <Main />
+        </ApolloProvider>
       </NativeRouter>
       <StatusBar
         backgroundColor={theme.colors.appBarBackground}
