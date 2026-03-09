@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
 });
 
 export default function App() {
+  // console.log("App rendered");
+  // console.log("expoConfig:", Constants.expoConfig);
+  // console.log("executionEnvironment:", Constants.expoConfig.extra.env );
+
   return (
     <View style={styles.container}>
       <NativeRouter
