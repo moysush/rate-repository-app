@@ -3,7 +3,7 @@ import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import theme from "../theme";
 import Text from "./Text";
 import * as yup from "yup";
-import useSignIn from "../utils/useSignIn";
+import useSignIn from "../hooks/useSignIn";
 
 const validationSchema = yup.object().shape({
   username: yup.string().required("Username is required!"),
