@@ -4,14 +4,17 @@ import theme from "./src/theme";
 import { NativeRouter } from "react-router-native";
 import { ApolloProvider } from "@apollo/client";
 import createApolloClient from "./src/utils/apolloClient";
-
-const apolloClient = createApolloClient();
+import AuthStorage from "./src/utils/authStorage";
+import AuthStorageContext from "./src/contexts/AuthStorageContext";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
+
+const authStorage = new AuthStorage();
+const apolloClient = createApolloClient(authStorage);
 
 export default function App() {
   // console.log("App rendered");
@@ -24,7 +27,9 @@ export default function App() {
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
         <ApolloProvider client={apolloClient}>
-          <Main />
+          <AuthStorageContext.Provider value={authStorage}>
+            <Main />
+          </AuthStorageContext.Provider>
         </ApolloProvider>
       </NativeRouter>
       <StatusBar
