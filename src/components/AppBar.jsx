@@ -3,6 +3,7 @@ import { StyleSheet, View, Pressable, ScrollView } from "react-native";
 import Text from "./Text";
 import theme from "../theme";
 import { useNavigate } from "react-router-native";
+import { useSignOut } from "../hooks/useSignOut";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,12 +20,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ label, path }) => {
+const AppBarTab = ({ label, path, customFeature }) => {
   const navigate = useNavigate();
   return (
     <Pressable
-      onPress={() => {
-        console.log("pressed", path);
+      onPress={async () => {
+        // console.log("pressed", path);
+        customFeature ? await customFeature() : null;
         navigate(path);
       }}
       style={styles.tab}
@@ -37,12 +39,20 @@ const AppBarTab = ({ label, path }) => {
 };
 
 const AppBar = () => {
+  const { user, signOut } = useSignOut();
+  // console.log(user);
+  // console.log(user?.username);
+
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
         <AppBarTab label="Repositories" path="/" />
-        <AppBarTab label="Sign in" path="/signin" />
+        {!user && <AppBarTab label="Sign In" path="/signin" />}
+        {user && (
+          <AppBarTab label="Sign Out" path="/signin" customFeature={signOut} />
+        )}
       </ScrollView>
+      {user && <AppBarTab label={user?.username} />}
     </View>
   );
 };

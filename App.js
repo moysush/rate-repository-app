@@ -17,9 +17,6 @@ const authStorage = new AuthStorage();
 const apolloClient = createApolloClient(authStorage);
 
 export default function App() {
-  // console.log("App rendered");
-  // console.log("expoConfig:", Constants.expoConfig);
-  // console.log("executionEnvironment:", Constants.expoConfig.extra.env );
 
   return (
     <View style={styles.container}>
