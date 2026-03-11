@@ -42,26 +42,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const SignIn = () => {
-  const [signIn] = useSignIn();
-  const navigate = useNavigate();
-
+export const SignInContainer = ({ onSubmit }) => {
   const formik = useFormik({
     initialValues: {
       username: "",
       password: "",
     },
     validationSchema,
-    onSubmit: async (values) => {
-      const { username, password } = values;
-      try {
-        const { data } = await signIn({ username, password });
-        console.log(data);
-        navigate("/");
-      } catch (e) {
-        console.log(e);
-      }
-    },
+    onSubmit,
   });
 
   return (
@@ -86,10 +74,28 @@ const SignIn = () => {
         <Text style={styles.errorMessage}>{formik.errors.password}</Text>
       )}
       <Pressable onPress={formik.handleSubmit} style={styles.button}>
-        <Text style={styles.buttonText}>Sign in</Text>
+        <Text style={styles.buttonText}>Sign In</Text>
       </Pressable>
     </View>
   );
+};
+
+const SignIn = () => {
+  const [signIn] = useSignIn();
+  const navigate = useNavigate();
+
+  const onSubmit = async (values) => {
+    const { username, password } = values;
+    try {
+      const { data } = await signIn({ username, password });
+      console.log(data);
+      navigate("/");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return <SignInContainer onSubmit={onSubmit} />;
 };
 
 export default SignIn;
