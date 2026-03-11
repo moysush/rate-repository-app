@@ -3,12 +3,22 @@ import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../hooks/useRepositories";
 import Text from "./Text";
 
-const RepositoryList = () => {
-  const { repositories, loading, error } = useRepositories();
-
+export const RepositoryListContainer = ({ repositories }) => {
   const repositoryNodes = repositories
     ? repositories?.edges?.map((edge) => edge.node)
     : [];
+
+  return (
+    <FlatList
+      data={repositoryNodes}
+      renderItem={({ item }) => <RepositoryItem data={item} />}
+      keyExtractor={(item) => item.id}
+    />
+  );
+};
+
+const RepositoryList = () => {
+  const { repositories, loading, error } = useRepositories();
 
   if (loading) {
     return (
@@ -34,13 +44,7 @@ const RepositoryList = () => {
     );
   }
 
-  return (
-    <FlatList
-      data={repositoryNodes}
-      renderItem={({ item }) => <RepositoryItem data={item} />}
-      keyExtractor={(item) => item.id}
-    />
-  );
+  return <RepositoryListContainer repositories={repositories} />;
 };
 
 export default RepositoryList;

@@ -47,7 +47,7 @@ const formatThousands = (value) => {
 
 const RepositoryItem = ({ data }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="repositoryItem">
       <View>
         <View style={styles.repoContainer}>
           <Image style={styles.image} source={{ uri: data.ownerAvatarUrl }} />
