@@ -55,6 +55,8 @@ describe("RepositoryList", () => {
       const repositoryItems = screen.getAllByTestId("repositoryItem");
       const [firstRepoItem, secondRepoItem] = repositoryItems;
 
+      expect(repositoryItems).toHaveLength(2);
+
       within(firstRepoItem).getByText("jaredpalmer/formik");
       within(firstRepoItem).getByText(
         "Build forms in React, without the tears",
