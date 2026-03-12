@@ -1,6 +1,7 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, Pressable } from "react-native";
 import Text from "./Text";
 import theme from "../theme";
+import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,11 +20,10 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     gap: 16,
-    flex: 1,
   },
   detailsContainer: {
-    flex: 1, // This forces this specific container to stay within the row's bounds
     gap: 8,
+    flex: 1,
   },
   statsContainer: {
     justifyContent: "space-evenly",
@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     color: theme.colors.surface,
     alignSelf: "flex-start",
-    padding: 6,
-    borderRadius: 4,
+    paddingVertical: 4,
+    paddingHorizontal: 12,
+    borderRadius: 6,
   },
 });
 
@@ -45,10 +46,16 @@ const formatThousands = (value) => {
   return value;
 };
 
-const RepositoryItem = ({ data }) => {
+const RepositoryItem = ({ data, children }) => {
+  const navigate = useNavigate();
+
   return (
-    <View style={styles.container} testID="repositoryItem">
-      <View>
+    <View>
+      <Pressable
+        onPress={() => navigate(`/repositories/${data.id}`)}
+        style={styles.container}
+        testID="repositoryItem"
+      >
         <View style={styles.repoContainer}>
           <Image style={styles.image} source={{ uri: data.ownerAvatarUrl }} />
           <View style={styles.detailsContainer}>
@@ -113,7 +120,8 @@ const RepositoryItem = ({ data }) => {
             </Text>
           </View>
         </View>
-      </View>
+        <View>{children}</View>
+      </Pressable>
     </View>
   );
 };

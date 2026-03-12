@@ -47,9 +47,9 @@ const AppBar = () => {
     <View style={styles.container}>
       <ScrollView horizontal>
         <AppBarTab label="Repositories" path="/" />
-        {!user && <AppBarTab label="Sign In" path="/signin" />}
+        {!user && <AppBarTab label="Sign in" path="/signin" />}
         {user && (
-          <AppBarTab label="Sign Out" path="/signin" customFeature={signOut} />
+          <AppBarTab label="Sign out" path="/signin" customFeature={signOut} />
         )}
       </ScrollView>
       {user && <AppBarTab label={user?.username} />}
