@@ -7,6 +7,7 @@ import useCreateReview from "../hooks/useCreateReview";
 import { useState } from "react";
 import TextInputErrorMessage from "./ui/TextInputErrorMessage";
 import theme from "../theme";
+import { useNavigate } from "react-router-native";
 
 const validationSchema = yup.object().shape({
   ownerName: yup.string().required("Repository owner name is required"),
@@ -22,6 +23,7 @@ const validationSchema = yup.object().shape({
 const CreateReview = () => {
   const [createReview] = useCreateReview();
   const [error, setError] = useState();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       ownerName: "",
@@ -39,6 +41,7 @@ const CreateReview = () => {
           rating: Number(rating),
           text,
         });
+        navigate(`/repositories/${data.createReview.repositoryId}`);
         console.log(data);
       } catch (e) {
         setError(e.message);
