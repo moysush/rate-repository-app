@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import * as yup from "yup";
 import useSignIn from "../hooks/useSignIn";
 import { useNavigate } from "react-router-native";
@@ -7,20 +7,14 @@ import Button from "./ui/Button";
 import TextInputErrorMessage from "./ui/TextInputErrorMessage";
 import { useState } from "react";
 import TextInput from "./ui/TextInput";
+import theme from "../theme";
 
 const validationSchema = yup.object().shape({
   username: yup.string().required("Username is required"),
   password: yup.string().required("Password is required"),
 });
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    gap: 10,
-  },
-});
-
-export const SignInContainer = ({ onSubmit, invalidData }) => {
+export const SignInContainer = ({ onSubmit, error }) => {
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -31,7 +25,7 @@ export const SignInContainer = ({ onSubmit, invalidData }) => {
   });
 
   return (
-    <View style={styles.container}>
+    <View style={theme.formContainer}>
       <TextInput formik={formik} field="username" placeholder="Username" />
       <TextInput
         formik={formik}
@@ -40,9 +34,7 @@ export const SignInContainer = ({ onSubmit, invalidData }) => {
         secureTextEntry={true}
       />
       {/* only for the data error */}
-      {invalidData ? (
-        <TextInputErrorMessage formik={formik} invalidData={invalidData} />
-      ) : null}
+      {error ? <TextInputErrorMessage formik={formik} error={error} /> : null}
       <Button onPress={formik.handleSubmit}>Sign in</Button>
     </View>
   );
@@ -51,7 +43,7 @@ export const SignInContainer = ({ onSubmit, invalidData }) => {
 const SignIn = () => {
   const [signIn] = useSignIn();
   const navigate = useNavigate();
-  const [invalidData, setInvalidData] = useState(null);
+  const [error, setError] = useState(null);
 
   const onSubmit = async (values) => {
     const { username, password } = values;
@@ -60,12 +52,12 @@ const SignIn = () => {
       console.log(data);
       navigate("/");
     } catch (e) {
-      setInvalidData(e.message);
+      setError(e.message);
       console.log(e);
     }
   };
 
-  return <SignInContainer onSubmit={onSubmit} invalidData={invalidData} />;
+  return <SignInContainer onSubmit={onSubmit} error={error} />;
 };
 
 export default SignIn;

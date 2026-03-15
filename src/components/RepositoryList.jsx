@@ -13,7 +13,7 @@ export const RepositoryListContainer = ({ repositories }) => {
       data={repositoryNodes}
       renderItem={({ item }) => <RepositoryItem data={item} />}
       keyExtractor={(item) => item.id}
-      style={{ padding: 8 }}
+      style={{ padding: 8, marginBottom: 8 }}
     />
   );
 };

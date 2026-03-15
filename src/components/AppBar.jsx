@@ -50,6 +50,7 @@ const AppBar = () => {
         <AppBarTab label="Repositories" path="/" />
         {!user && <AppBarTab label="Sign in" path="/signin" />}
         {!user && <AppBarTab label="Sign up" path="/signup" />}
+        {user && <AppBarTab label="Create a review" path="/create-review" />}
         {user && (
           <AppBarTab label="Sign out" path="/signin" customFeature={signOut} />
         )}

@@ -2,7 +2,7 @@ import { StyleSheet, View } from "react-native";
 import Text from "./Text";
 import theme from "../../theme";
 
-const TextInputErrorMessage = ({ formik, field, invalidData }) => {
+const TextInputErrorMessage = ({ formik, field, error }) => {
   const styles = StyleSheet.create({
     errorMessage: {
       color: theme.colors.error,
@@ -12,9 +12,9 @@ const TextInputErrorMessage = ({ formik, field, invalidData }) => {
     <View>
       {formik.touched?.[field] && formik.errors?.[field] ? (
         <Text style={styles.errorMessage}>{formik.errors?.[field]}</Text>
-      ) : invalidData ? (
+      ) : error ? (
         <Text fontWeight="bold" style={styles.errorMessage}>
-          {invalidData}
+          {error}
         </Text>
       ) : null}
     </View>

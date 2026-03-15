@@ -11,7 +11,7 @@ import { format } from "date-fns";
 
 const RepositoryInfo = ({ data }) => {
   return (
-    <View style={{ padding: 8 }}>
+    <View style={{ marginBottom: 8 }}>
       <RepositoryItem data={data}>
         <Button
           onPress={() => Linking.openURL(data.url)}
@@ -29,8 +29,9 @@ const ReviewItem = ({ data }) => {
   const styles = StyleSheet.create({
     container: {
       padding: 16,
-      backgroundColor: theme.colors.onPrimary,
       borderRadius: 16,
+      backgroundColor: theme.colors.onPrimary,
+      marginBottom: 8,
       // borderColor: theme.colors.surfaceVariant,
     },
     reviewContainer: {
@@ -58,7 +59,7 @@ const ReviewItem = ({ data }) => {
   });
 
   return (
-    <View style={{ paddingHorizontal: 8, paddingVertical: 4 }}>
+    <View>
       <View style={styles.container}>
         <View style={styles.reviewContainer}>
           <Text fontSize="subheading" style={styles.ratingContainer}>
@@ -85,9 +86,11 @@ const SingleRepositoryItem = () => {
     error,
   } = useQuery(GET_REPOSITORY, {
     variables: { id },
+    fetchPolicy: "cache-and-network",
   });
   const { data: reviewData } = useQuery(GET_REVIEWS, {
     variables: { id },
+    fetchPolicy: "cache-and-network",
   });
   const repository = repositoryData?.repository ?? {};
   const reviewNodes =
@@ -123,6 +126,7 @@ const SingleRepositoryItem = () => {
       renderItem={({ item }) => <ReviewItem data={item} />}
       keyExtractor={(item) => item.id}
       ListHeaderComponent={() => <RepositoryInfo data={repository} />}
+      style={{ padding: 8, marginBottom: 8 }}
     />
   );
 };

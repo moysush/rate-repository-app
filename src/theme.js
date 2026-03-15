@@ -41,6 +41,10 @@ const theme = {
     medium: "500",
     bold: "700",
   },
+  formContainer: {
+    padding: 16,
+    gap: 10,
+  },
 };
 
 export default theme;
