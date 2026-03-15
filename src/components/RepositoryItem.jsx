@@ -1,5 +1,5 @@
 import { Image, StyleSheet, View, Pressable } from "react-native";
-import Text from "./Text";
+import Text from "./ui/Text";
 import theme from "../theme";
 import { useNavigate } from "react-router-native";
 

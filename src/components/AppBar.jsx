@@ -1,6 +1,6 @@
 import Constants from "expo-constants";
 import { StyleSheet, View, Pressable, ScrollView } from "react-native";
-import Text from "./Text";
+import Text from "./ui/Text";
 import theme from "../theme";
 import { useNavigate } from "react-router-native";
 import { useSignOut } from "../hooks/useSignOut";
@@ -46,12 +46,15 @@ const AppBar = () => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
+        {/* tabs */}
         <AppBarTab label="Repositories" path="/" />
         {!user && <AppBarTab label="Sign in" path="/signin" />}
         {user && (
           <AppBarTab label="Sign out" path="/signin" customFeature={signOut} />
         )}
+        <AppBarTab label="Sign up" path="/signup" />
       </ScrollView>
+      {/* profile name */}
       {user && <AppBarTab label={user?.username} />}
     </View>
   );

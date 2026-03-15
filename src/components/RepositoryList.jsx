@@ -1,7 +1,7 @@
 import { FlatList, View, ActivityIndicator } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../hooks/useRepositories";
-import Text from "./Text";
+import Text from "./ui/Text";
 
 export const RepositoryListContainer = ({ repositories }) => {
   const repositoryNodes = repositories

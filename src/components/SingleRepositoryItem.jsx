@@ -3,9 +3,9 @@ import RepositoryItem from "./RepositoryItem";
 import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
 import { useQuery } from "@apollo/client";
 import { GET_REPOSITORY, GET_REVIEWS } from "../graphql/queries";
-import Text from "./Text";
+import Text from "./ui/Text";
 import * as Linking from "expo-linking";
-import Button from "./Button";
+import Button from "./ui/Button";
 import theme from "../theme";
 import { format } from "date-fns";
 
