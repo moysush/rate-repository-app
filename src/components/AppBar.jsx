@@ -49,10 +49,10 @@ const AppBar = () => {
         {/* tabs */}
         <AppBarTab label="Repositories" path="/" />
         {!user && <AppBarTab label="Sign in" path="/signin" />}
+        {!user && <AppBarTab label="Sign up" path="/signup" />}
         {user && (
           <AppBarTab label="Sign out" path="/signin" customFeature={signOut} />
         )}
-        <AppBarTab label="Sign up" path="/signup" />
       </ScrollView>
       {/* profile name */}
       {user && <AppBarTab label={user?.username} />}

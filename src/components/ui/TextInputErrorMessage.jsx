@@ -14,7 +14,7 @@ const TextInputErrorMessage = ({ formik, field, invalidData }) => {
         <Text style={styles.errorMessage}>{formik.errors?.[field]}</Text>
       ) : invalidData ? (
         <Text fontWeight="bold" style={styles.errorMessage}>
-          {invalidData}.
+          {invalidData}
         </Text>
       ) : null}
     </View>

@@ -9,8 +9,8 @@ import { useState } from "react";
 import TextInput from "./ui/TextInput";
 
 const validationSchema = yup.object().shape({
-  username: yup.string().required("Username is required!"),
-  password: yup.string().required("Password is required!"),
+  username: yup.string().required("Username is required"),
+  password: yup.string().required("Password is required"),
 });
 
 const styles = StyleSheet.create({
@@ -40,7 +40,9 @@ export const SignInContainer = ({ onSubmit, invalidData }) => {
         secureTextEntry={true}
       />
       {/* only for the data error */}
-      <TextInputErrorMessage formik={formik} invalidData={invalidData} />
+      {invalidData ? (
+        <TextInputErrorMessage formik={formik} invalidData={invalidData} />
+      ) : null}
       <Button onPress={formik.handleSubmit}>Sign in</Button>
     </View>
   );

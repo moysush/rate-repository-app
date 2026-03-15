@@ -17,12 +17,13 @@ const TextInput = ({ formik, field, placeholder, ...rest }) => {
     },
   });
   return (
-    <View>
+    <View style={{ gap: 4 }}>
       <Input
         style={[styles.input, formik.errors?.[field] && styles.inputError]}
         placeholder={placeholder}
         value={formik.values?.[field]}
         onChangeText={formik.handleChange(field)}
+        onBlur={formik.handleBlur(field)}
         {...rest}
       />
       <TextInputErrorMessage formik={formik} field={field} />
