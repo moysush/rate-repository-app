@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ label, path, customFeature }) => {
+const AppBarTab = ({ label, path, customFeature, user }) => {
   const navigate = useNavigate();
   return (
     <Pressable
@@ -32,7 +32,15 @@ const AppBarTab = ({ label, path, customFeature }) => {
       }}
       style={styles.tab}
     >
-      <Text color="surface" fontWeight="bold" fontSize="subheading">
+      <Text
+        style={{
+          color: user
+            ? theme.colors.primaryContainer
+            : theme.colors.mainbBackground,
+        }}
+        fontWeight="bold"
+        fontSize="subheading"
+      >
         {label}
       </Text>
     </Pressable>
@@ -62,7 +70,7 @@ const AppBar = () => {
         )}
       </ScrollView>
       {/* profile name */}
-      {user && <AppBarTab label={user?.username} />}
+      {user && <AppBarTab label={user?.username} user={user} />}
     </View>
   );
 };
