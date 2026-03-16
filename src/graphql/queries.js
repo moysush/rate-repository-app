@@ -20,8 +20,8 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
-export const ME = gql`
-  query Me {
+export const GET_CURRENT_USER = gql`
+  query GetCurrentUser {
     me {
       id
       username
