@@ -6,8 +6,8 @@ import theme from "./theme";
 import SignIn from "./components/SignIn";
 import SingleRepositoryItem from "./components/repositories/SingleRepositoryItem";
 import SignUp from "./components/SignUp";
-import CreateReview from "./components/CreateReview";
-import MyReviews from "./components/MyReviews";
+import CreateReview from "./components/reviews/CreateReview";
+import MyReviews from "./components/reviews/MyReviews";
 
 const styles = StyleSheet.create({
   container: {

@@ -37,6 +37,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 8,
   },
+  pressed: {
+    opacity: 0.9,
+  },
 });
 
 const formatThousands = (value) => {
@@ -53,7 +56,7 @@ const RepositoryItem = ({ data, children }) => {
     <View>
       <Pressable
         onPress={() => navigate(`/repositories/${data.id}`)}
-        style={styles.container}
+        style={({ pressed }) => [styles.container, pressed && styles.pressed]}
         testID="repositoryItem"
       >
         <View style={styles.repoContainer}>

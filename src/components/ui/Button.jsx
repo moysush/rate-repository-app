@@ -15,10 +15,16 @@ const Button = ({ children, onPress, style }) => {
       color: theme.colors.onPrimary,
       fontWeight: "bold",
     },
+    pressed: {
+      opacity: 0.8,
+    },
   });
 
   return (
-    <Pressable style={[styles.button, style]} onPress={onPress}>
+    <Pressable
+      style={({ pressed }) => [styles.button, pressed && styles.pressed, style]}
+      onPress={onPress}
+    >
       <Text style={styles.buttonText}>{children}</Text>
     </Pressable>
   );

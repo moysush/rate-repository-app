@@ -6,7 +6,7 @@ import { GET_REPOSITORY, GET_REVIEWS } from "../../graphql/queries";
 import Text from "../ui/Text";
 import * as Linking from "expo-linking";
 import Button from "../ui/Button";
-import ReviewItem from "./ReviewItem";
+import ReviewItem from "../reviews/ReviewItem";
 
 const RepositoryInfo = ({ data }) => {
   return (

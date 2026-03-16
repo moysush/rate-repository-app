@@ -1,12 +1,12 @@
 import { View } from "react-native";
-import TextInput from "./ui/TextInput";
+import TextInput from "../ui/TextInput";
 import { useFormik } from "formik";
-import Button from "./ui/Button";
+import Button from "../ui/Button";
 import * as yup from "yup";
-import useCreateReview from "../hooks/useCreateReview";
+import useCreateReview from "../../hooks/useCreateReview";
 import { useState } from "react";
-import TextInputErrorMessage from "./ui/TextInputErrorMessage";
-import theme from "../theme";
+import TextInputErrorMessage from "../ui/TextInputErrorMessage";
+import theme from "../../theme";
 import { useNavigate } from "react-router-native";
 
 const validationSchema = yup.object().shape({

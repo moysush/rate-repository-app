@@ -27,6 +27,9 @@ const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
     chipText: {
       color: theme.colors.onPrimaryContainer,
     },
+    pressed: {
+      opacity: 0.8,
+    },
   });
 
   const handleSorting = async (orderBy, orderDirection, sortKey) => {
@@ -38,7 +41,8 @@ const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
     <View style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <Pressable
-          style={[
+          style={({ pressed }) => [
+            pressed && styles.pressed,
             styles.chip,
             selectedSort === "latest" && styles.chipSelected,
           ]}
@@ -49,7 +53,8 @@ const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
           <Text style={styles.chipText}>Latest repositories</Text>
         </Pressable>
         <Pressable
-          style={[
+          style={({ pressed }) => [
+            pressed && styles.pressed,
             styles.chip,
             selectedSort === "highest" && styles.chipSelected,
           ]}
@@ -60,7 +65,8 @@ const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
           <Text style={styles.chipText}>Highest rated repositories</Text>
         </Pressable>
         <Pressable
-          style={[
+          style={({ pressed }) => [
+            pressed && styles.pressed,
             styles.chip,
             selectedSort === "lowest" && styles.chipSelected,
           ]}

@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
     // marginRight: 16,
     // paddingVertical: 12,
   },
+  pressed: {
+    opacity: 0.8,
+  },
 });
 
 const AppBarTab = ({ label, path, customFeature, user }) => {
@@ -30,7 +33,7 @@ const AppBarTab = ({ label, path, customFeature, user }) => {
         customFeature ? await customFeature() : null;
         navigate(path);
       }}
-      style={styles.tab}
+      style={({ pressed }) => [styles.tab, pressed && styles.pressed]}
     >
       <Text
         style={{

@@ -1,14 +1,10 @@
 import theme from "../../theme";
 import { format } from "date-fns";
-import { Alert, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Text from "../ui/Text";
-import Button from "../ui/Button";
-import { useNavigate } from "react-router-native";
-import useDeleteReview from "../../hooks/useDeleteReview";
+import DeleteReview from "./DeleteReview";
 
 const ReviewItem = ({ data, refetch }) => {
-  const navigate = useNavigate();
-  const [deleteReview] = useDeleteReview();
   const date = format(new Date(data.createdAt), "MMM dd, y");
   const styles = StyleSheet.create({
     container: {
@@ -48,11 +44,6 @@ const ReviewItem = ({ data, refetch }) => {
     },
   });
 
-  const handleDelete = async (id) => {
-    await deleteReview(id);
-    await refetch();
-  };
-
   return (
     <View>
       <View style={styles.container}>
@@ -73,32 +64,7 @@ const ReviewItem = ({ data, refetch }) => {
             <Text>{data.text}</Text>
           </View>
         </View>
-        {data.repositoryId ? (
-          <View style={styles.buttonsContainer}>
-            <Button
-              style={{ flex: 1 }}
-              onPress={() => navigate(`/repositories/${data.repositoryId}`)}
-            >
-              View repository
-            </Button>
-            <Button
-              style={{ flex: 1, backgroundColor: theme.colors.error }}
-              onPress={() =>
-                Alert.alert(
-                  "Delete",
-                  "Are you sure you want to delete this review?",
-                  [
-                    { text: "Cancel" },
-                    { text: "Confirm", onPress: () => handleDelete(data.id) },
-                  ],
-                  { cancelable: true },
-                )
-              }
-            >
-              Delete review
-            </Button>
-          </View>
-        ) : null}
+        <DeleteReview data={data} refetch={refetch} />
       </View>
     </View>
   );

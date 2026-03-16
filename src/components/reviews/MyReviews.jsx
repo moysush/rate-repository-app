@@ -1,7 +1,7 @@
 import { FlatList } from "react-native";
 import { useQuery } from "@apollo/client";
-import { GET_CURRENT_USER } from "../graphql/queries";
-import ReviewItem from "./repositories/ReviewItem";
+import { GET_CURRENT_USER } from "../../graphql/queries";
+import ReviewItem from "./ReviewItem";
 
 const MyReviews = () => {
   const { data, refetch } = useQuery(GET_CURRENT_USER, {
