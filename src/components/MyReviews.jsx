@@ -6,7 +6,6 @@ import ReviewItem from "./repositories/ReviewItem";
 const MyReviews = () => {
   const { data } = useQuery(GET_CURRENT_USER);
   const reviewNodes = data.me.reviews.edges.map((e) => e.node);
-  console.log(reviewNodes);
 
   return (
     <FlatList
