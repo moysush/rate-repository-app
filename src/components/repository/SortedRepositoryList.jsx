@@ -1,6 +1,6 @@
 import { StyleSheet, View, ScrollView, Pressable } from "react-native";
-import Text from "./ui/Text";
-import theme from "../theme";
+import Text from "../ui/Text";
+import theme from "../../theme";
 
 const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
   const styles = StyleSheet.create({
@@ -10,8 +10,9 @@ const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
       gap: 16,
     },
     chip: {
-      borderWidth: 1,
-      borderColor: theme.colors.onSurfaceVariant,
+      backgroundColor: theme.colors.surfaceContainer,
+      //   borderWidth: 1,
+      //   borderColor: theme.colors.onSurfaceVariant,
       paddingVertical: 4,
       paddingHorizontal: 12,
       borderRadius: 8,
@@ -20,20 +21,22 @@ const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
     },
     chipSelected: {
       backgroundColor: theme.colors.primaryContainer,
+      //   borderWidth: 1,
+      //   borderColor: theme.colors.onPrimaryContainer,
     },
     chipText: {
-      color: theme.colors.onSurface,
+      color: theme.colors.onPrimaryContainer,
     },
   });
 
-  const handleSorting = async (orderBy, orderDirection, selectedSort) => {
-    setSelectedSort(selectedSort);
+  const handleSorting = async (orderBy, orderDirection, sortKey) => {
+    setSelectedSort(sortKey);
     await refetch({ orderBy, orderDirection });
   };
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <Pressable
           style={[
             styles.chip,

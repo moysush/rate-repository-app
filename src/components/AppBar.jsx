@@ -46,7 +46,11 @@ const AppBar = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal style={{ padding: 8 }}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{ padding: 8 }}
+      >
         {/* tabs */}
         <AppBarTab label="Repositories" path="/" />
         {!user && <AppBarTab label="Sign in" path="/signin" />}

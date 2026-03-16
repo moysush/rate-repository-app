@@ -1,11 +1,13 @@
 import { FlatList, View, ActivityIndicator } from "react-native";
 import RepositoryItem from "./RepositoryItem";
-import useRepositories from "../hooks/useRepositories";
-import Text from "./ui/Text";
+import useRepositories from "../../hooks/useRepositories";
+import Text from "../ui/Text";
 import { useState } from "react";
 import SortedRepositoryList from "./SortedRepositoryList";
+import FilteredRepositoryList from "./FilteredRepositoryList";
 
 export const RepositoryListContainer = ({ repositories, refetch }) => {
+  const [filterText, setFilterText] = useState("");
   const [selectedSort, setSelectedSort] = useState("latest");
   const repositoryNodes = repositories
     ? repositories?.edges?.map((edge) => edge.node)
@@ -17,13 +19,20 @@ export const RepositoryListContainer = ({ repositories, refetch }) => {
       renderItem={({ item }) => <RepositoryItem data={item} />}
       keyExtractor={(item) => item.id}
       style={{ padding: 8, marginBottom: 8 }}
-      ListHeaderComponent={() => (
-        <SortedRepositoryList
-          refetch={refetch}
-          selectedSort={selectedSort}
-          setSelectedSort={setSelectedSort}
-        />
-      )}
+      ListHeaderComponent={
+        <View>
+          <FilteredRepositoryList
+            refetch={refetch}
+            filterText={filterText}
+            setFilterText={setFilterText}
+          />
+          <SortedRepositoryList
+            refetch={refetch}
+            selectedSort={selectedSort}
+            setSelectedSort={setSelectedSort}
+          />
+        </View>
+      }
     />
   );
 };

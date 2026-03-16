@@ -1,6 +1,6 @@
 import { Image, StyleSheet, View, Pressable } from "react-native";
-import Text from "./ui/Text";
-import theme from "../theme";
+import Text from "../ui/Text";
+import theme from "../../theme";
 import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     paddingVertical: 4,
     paddingHorizontal: 12,
-    borderRadius: 6,
+    borderRadius: 8,
   },
 });
 

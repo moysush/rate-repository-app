@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
 import { Route, Routes } from "react-router-native";
-import RepositoryList from "./components/RepositoryList";
+import RepositoryList from "./components/repository";
 import AppBar from "./components/AppBar";
 import theme from "./theme";
 import SignIn from "./components/SignIn";
-import SingleRepositoryItem from "./components/SingleRepositoryItem";
+import SingleRepositoryItem from "./components/repository/SingleRepositoryItem";
 import SignUp from "./components/SignUp";
 import CreateReview from "./components/CreateReview";
 

@@ -15,7 +15,7 @@ const theme = {
     // Neutral Colors (Surfaces)
     mainbBackground: "#E7E0EC", // Base background for the whole app
     surface: "#FEF7FF",
-    // surfaceContainerLow: "#F7F2FA", // Slightly darker for a subtle list background
+    surfaceContainer: "#F7F2FA", // Slightly darker for a subtle list background
     // surfaceVariant: "#E7E0EC", // Darker neutral for high contrast
     onSurface: "#1D1B20", // Main text color
     onSurfaceVariant: "#49454F", // Secondary/hint text
