@@ -1,13 +1,12 @@
 import { useParams } from "react-router-native";
 import RepositoryItem from "./RepositoryItem";
-import { ActivityIndicator, FlatList, StyleSheet, View } from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 import { useQuery } from "@apollo/client";
 import { GET_REPOSITORY, GET_REVIEWS } from "../../graphql/queries";
 import Text from "../ui/Text";
 import * as Linking from "expo-linking";
 import Button from "../ui/Button";
-import theme from "../../theme";
-import { format } from "date-fns";
+import ReviewItem from "./ReviewItem";
 
 const RepositoryInfo = ({ data }) => {
   return (
@@ -20,60 +19,6 @@ const RepositoryInfo = ({ data }) => {
           Open in GitHub
         </Button>
       </RepositoryItem>
-    </View>
-  );
-};
-
-const ReviewItem = ({ data }) => {
-  const date = format(new Date(data.createdAt), "MMM dd, y");
-  const styles = StyleSheet.create({
-    container: {
-      padding: 16,
-      borderRadius: 16,
-      backgroundColor: theme.colors.onPrimary,
-      marginBottom: 8,
-      // borderColor: theme.colors.surfaceVariant,
-    },
-    reviewContainer: {
-      display: "flex",
-      flexDirection: "row",
-      gap: 16,
-    },
-    ratingContainer: {
-      // justifyContent: "space-evenly",
-      width: 56,
-      height: 56,
-      alignSelf: "flex-start",
-      borderWidth: 4,
-      borderRadius: 28,
-      textAlign: "center",
-      textAlignVertical: "center",
-      borderColor: theme.colors.primary,
-      fontWeight: "bold",
-      color: theme.colors.primary,
-    },
-    detailsContainer: {
-      gap: 4,
-      flex: 1,
-    },
-  });
-
-  return (
-    <View>
-      <View style={styles.container}>
-        <View style={styles.reviewContainer}>
-          <Text fontSize="subheading" style={styles.ratingContainer}>
-            {data.rating}
-          </Text>
-          <View style={styles.detailsContainer}>
-            <Text fontSize="subheading" fontWeight="bold">
-              {data.user.username}
-            </Text>
-            <Text color="onSurfaceVariant">{date}</Text>
-            <Text>{data.text}</Text>
-          </View>
-        </View>
-      </View>
     </View>
   );
 };
