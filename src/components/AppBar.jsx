@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   tab: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 8,
+    // paddingHorizontal: 8,
     // marginRight: 16,
     // paddingVertical: 12,
   },
@@ -45,7 +46,7 @@ const AppBar = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView horizontal>
+      <ScrollView horizontal style={{ padding: 8 }}>
         {/* tabs */}
         <AppBarTab label="Repositories" path="/" />
         {!user && <AppBarTab label="Sign in" path="/signin" />}
