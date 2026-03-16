@@ -1,65 +1,12 @@
-import {
-  FlatList,
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  ScrollView,
-  Pressable,
-} from "react-native";
+import { FlatList, View, ActivityIndicator } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../hooks/useRepositories";
 import Text from "./ui/Text";
-import theme from "../theme";
-
-const SortedRepositoryList = ({ refetch }) => {
-  const styles = StyleSheet.create({
-    container: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: 16,
-    },
-    sorting: {
-      backgroundColor: theme.colors.primary,
-      paddingVertical: 4,
-      paddingHorizontal: 12,
-      borderRadius: 6,
-      marginRight: 4,
-      marginBottom: 8,
-    },
-    sortingText: {
-      color: theme.colors.surface,
-    },
-  });
-  const handleSorting = async (orderBy, orderDirection) => {
-    await refetch({ orderBy, orderDirection });
-  };
-  return (
-    <View style={styles.container}>
-      <ScrollView horizontal>
-        <Pressable
-          style={styles.sorting}
-          onPress={() => handleSorting("CREATED_AT", "DESC")}
-        >
-          <Text style={styles.sortingText}>Latest repositories</Text>
-        </Pressable>
-        <Pressable
-          style={styles.sorting}
-          onPress={() => handleSorting("RATING_AVERAGE", "DESC")}
-        >
-          <Text style={styles.sortingText}>Highest rated repositories</Text>
-        </Pressable>
-        <Pressable
-          style={styles.sorting}
-          onPress={() => handleSorting("RATING_AVERAGE", "ASC")}
-        >
-          <Text style={styles.sortingText}>Lowest rated repositories</Text>
-        </Pressable>
-      </ScrollView>
-    </View>
-  );
-};
+import { useState } from "react";
+import SortedRepositoryList from "./SortedRepositoryList";
 
 export const RepositoryListContainer = ({ repositories, refetch }) => {
+  const [selectedSort, setSelectedSort] = useState("latest");
   const repositoryNodes = repositories
     ? repositories?.edges?.map((edge) => edge.node)
     : [];
@@ -70,7 +17,13 @@ export const RepositoryListContainer = ({ repositories, refetch }) => {
       renderItem={({ item }) => <RepositoryItem data={item} />}
       keyExtractor={(item) => item.id}
       style={{ padding: 8, marginBottom: 8 }}
-      ListHeaderComponent={() => <SortedRepositoryList refetch={refetch} />}
+      ListHeaderComponent={() => (
+        <SortedRepositoryList
+          refetch={refetch}
+          selectedSort={selectedSort}
+          setSelectedSort={setSelectedSort}
+        />
+      )}
     />
   );
 };
