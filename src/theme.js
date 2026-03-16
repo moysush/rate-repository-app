@@ -3,26 +3,34 @@ import { Platform } from "react-native";
 const theme = {
   colors: {
     // Brand Colors
-    primary: "#6750A4",
+    primary: "#65558F",
     onPrimary: "#FFFFFF",
     primaryContainer: "#EADDFF",
     onPrimaryContainer: "#21005D",
+
+    // secondary
+    secondary: "#625B71",
+    onSecondary: "#FFFFFF",
+
+    // tertiary
+    tertiary: "#7D5260",
+    onTertiary: "#FFFFFF",
 
     // outline
     outline: "#79747E",
     error: "#B3261E",
 
     // Neutral Colors (Surfaces)
-    mainbBackground: "#E7E0EC", // Base background for the whole app
+
     surface: "#FEF7FF",
-    surfaceContainer: "#F7F2FA", // Slightly darker for a subtle list background
-    // surfaceVariant: "#E7E0EC", // Darker neutral for high contrast
-    onSurface: "#1D1B20", // Main text color
-    onSurfaceVariant: "#49454F", // Secondary/hint text
+    surfaceContainer: "#F7F2FA",
+    onSurface: "#1D1B20",
+    onSurfaceVariant: "#49454F",
+    surfaceDim: "#DED8E1",
 
     // Top App Bar Specific
-    appBarBackground: "#211F26",
-    appBarText: "#E6E1E5",
+    // appBarBackground: "#F3EDF7",
+    // appBarText: "#1D1B20",
   },
   fontSizes: {
     body: 14,

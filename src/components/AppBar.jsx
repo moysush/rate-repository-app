@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     height: 64 + Constants.statusBarHeight,
-    backgroundColor: theme.colors.appBarBackground,
+    backgroundColor: theme.colors.secondary,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -36,7 +36,7 @@ const AppBarTab = ({ label, path, customFeature, user }) => {
         style={{
           color: user
             ? theme.colors.primaryContainer
-            : theme.colors.mainbBackground,
+            : theme.colors.onSecondary,
         }}
         fontWeight="bold"
         fontSize="subheading"

@@ -42,7 +42,7 @@ const CreateReview = () => {
           text,
         });
         navigate(`/repositories/${data.createReview.repositoryId}`);
-        console.log(data);
+        // console.log(data);
       } catch (e) {
         setError(e.message);
         console.log(e);

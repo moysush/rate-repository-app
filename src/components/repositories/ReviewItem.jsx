@@ -1,15 +1,20 @@
 import theme from "../../theme";
 import { format } from "date-fns";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import Text from "../ui/Text";
+import Button from "../ui/Button";
+import { useNavigate } from "react-router-native";
+import useDeleteReview from "../../hooks/useDeleteReview";
 
-const ReviewItem = ({ data }) => {
+const ReviewItem = ({ data, refetch }) => {
+  const navigate = useNavigate();
+  const [deleteReview] = useDeleteReview();
   const date = format(new Date(data.createdAt), "MMM dd, y");
   const styles = StyleSheet.create({
     container: {
       padding: 16,
       borderRadius: 16,
-      backgroundColor: theme.colors.onPrimary,
+      backgroundColor: theme.colors.surface,
       marginBottom: 8,
       // borderColor: theme.colors.surfaceVariant,
     },
@@ -35,7 +40,18 @@ const ReviewItem = ({ data }) => {
       gap: 2,
       flex: 1,
     },
+    buttonsContainer: {
+      flexDirection: "row",
+      marginTop: 12,
+      //   flex: 1,
+      gap: 16,
+    },
   });
+
+  const handleDelete = async (id) => {
+    await deleteReview(id);
+    await refetch();
+  };
 
   return (
     <View>
@@ -57,6 +73,32 @@ const ReviewItem = ({ data }) => {
             <Text>{data.text}</Text>
           </View>
         </View>
+        {data.repositoryId ? (
+          <View style={styles.buttonsContainer}>
+            <Button
+              style={{ flex: 1 }}
+              onPress={() => navigate(`/repositories/${data.repositoryId}`)}
+            >
+              View repository
+            </Button>
+            <Button
+              style={{ flex: 1, backgroundColor: theme.colors.error }}
+              onPress={() =>
+                Alert.alert(
+                  "Delete",
+                  "Are you sure you want to delete this review?",
+                  [
+                    { text: "Cancel" },
+                    { text: "Confirm", onPress: () => handleDelete(data.id) },
+                  ],
+                  { cancelable: true },
+                )
+              }
+            >
+              Delete review
+            </Button>
+          </View>
+        ) : null}
       </View>
     </View>
   );

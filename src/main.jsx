@@ -12,7 +12,7 @@ import MyReviews from "./components/MyReviews";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.mainbBackground,
+    backgroundColor: theme.colors.surfaceDim,
   },
 });
 

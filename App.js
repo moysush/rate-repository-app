@@ -30,7 +30,7 @@ export default function App() {
         </ApolloProvider>
       </NativeRouter>
       <StatusBar
-        backgroundColor={theme.colors.appBarBackground}
+        backgroundColor={theme.colors.secondary}
         barStyle="light-content"
       />
     </View>

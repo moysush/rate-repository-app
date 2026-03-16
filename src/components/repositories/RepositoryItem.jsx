@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-native";
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: theme.colors.onPrimary,
+    backgroundColor: theme.colors.surface,
     borderRadius: 16,
     marginBottom: 8,
     // borderColor: theme.colors.surfaceVariant,
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   language: {
     backgroundColor: theme.colors.primary,
-    color: theme.colors.surface,
+    color: theme.colors.onPrimary,
     alignSelf: "flex-start",
     paddingVertical: 4,
     paddingHorizontal: 12,
