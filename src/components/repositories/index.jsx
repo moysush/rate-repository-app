@@ -6,7 +6,11 @@ import { useState } from "react";
 import SortedRepositoryList from "./SortedRepositoryList";
 import FilteredRepositoryList from "./FilteredRepositoryList";
 
-export const RepositoryListContainer = ({ repositories, refetch }) => {
+export const RepositoryListContainer = ({
+  repositories,
+  refetch,
+  onEndReach,
+}) => {
   const [filterText, setFilterText] = useState("");
   const [selectedSort, setSelectedSort] = useState("latest");
   const repositoryNodes = repositories
@@ -33,12 +37,21 @@ export const RepositoryListContainer = ({ repositories, refetch }) => {
           />
         </View>
       }
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };
 
 const RepositoryList = () => {
-  const { repositories, loading, error, refetch } = useRepositories();
+  const { repositories, fetchMore, loading, error, refetch } = useRepositories({
+    first: 8,
+  });
+
+  const onEndReach = () => {
+    fetchMore();
+    // console.log("You have reached the end of the list");
+  };
 
   if (loading) {
     return (
@@ -65,7 +78,11 @@ const RepositoryList = () => {
   }
 
   return (
-    <RepositoryListContainer repositories={repositories} refetch={refetch} />
+    <RepositoryListContainer
+      repositories={repositories}
+      refetch={refetch}
+      onEndReach={onEndReach}
+    />
   );
 };
 

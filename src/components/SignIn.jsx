@@ -48,8 +48,8 @@ const SignIn = () => {
   const onSubmit = async (values) => {
     const { username, password } = values;
     try {
-      const { data } = await signIn({ username, password });
-      console.log(data);
+      await signIn({ username, password });
+      // console.log(data);
       navigate("/");
     } catch (e) {
       setError(e.message);
