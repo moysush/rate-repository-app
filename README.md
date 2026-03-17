@@ -21,6 +21,13 @@ Total spent time on the project:
 - React Router Native
 - Jest & React Native Testing Library
 
+## Architecture & Design
+
+* **Modular Component Structure:** Separated presentational components from business logic to keep the codebase dry and readable.
+* **Custom Hooks for Logic:** All GraphQL queries and mutations are abstracted into custom hooks (e.g., `useRepositories`, `useSignIn`), keeping components lean and focused on the UI.
+* **Centralized Theme & Styling:** Utilized a unified theme provider to maintain visual consistency and simplify global UI updates.
+* **Strict Validation:** Implemented schema-based validation via Formik and Yup to ensure data integrity before reaching the backend.
+
 ## Screenshots
 
 | Main Feed | Search | Create | Dashboard |
