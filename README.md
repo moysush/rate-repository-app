@@ -1,5 +1,5 @@
 # Rate Repository Application
-A mobile application for rating GitHub repositories, built as part of the *Full Stack Open* curriculum. This project remonstrates a deep dive into mobile development using React Native, Expo, and GraphQL.
+A mobile application for rating GitHub repositories, built as part of the *Full Stack Open* curriculum. This project demonstrates a deep dive into mobile development using React Native, Expo, and GraphQL.
 
 Total spent time on the project:
 
@@ -24,10 +24,8 @@ Total spent time on the project:
 ## Screenshots
 
 | Main Feed | Search | Create | Dashboard |
-|---|---|---|---|
-| ![Main Feed](./assets/screenshots/main-feed.png) | ![Search](./assets/screenshots/search.png) | ![Create](./assets/screenshots/create-review.png) | ![Dashboard](./assets/screenshots/dashboard.png) |
-
----
+| :---: | :---: | :---: | :---: |
+| <img src="./assets/screenshots/main-feed.png" height="450" /> | <img src="./assets/screenshots/search.png" height="450" /> | <img src="./assets/screenshots/create-review.png" height="450" /> | <img src="./assets/screenshots/dashboard.png" height="450" /> |
 
 ## Installation & Setup
 
