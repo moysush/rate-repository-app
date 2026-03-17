@@ -2,7 +2,7 @@ import Constants from "expo-constants";
 import { StyleSheet, View, Pressable, ScrollView } from "react-native";
 import Text from "./ui/Text";
 import theme from "../theme";
-import { useNavigate } from "react-router-native";
+import { useLocation, useNavigate } from "react-router-native";
 import { useSignOut } from "../hooks/useSignOut";
 
 const styles = StyleSheet.create({
@@ -12,28 +12,42 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.secondary,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
   tab: {
-    paddingHorizontal: 8,
+    marginHorizontal: 12,
+    // paddingHorizontal: 12,
     // paddingHorizontal: 8,
     // marginRight: 16,
-    // paddingVertical: 12,
+    paddingVertical: 4,
   },
   pressed: {
     opacity: 0.8,
+  },
+  activeTab: {
+    borderBottomWidth: 2,
+    borderColor: theme.colors.onSecondary,
+    // paddingBottom: 2,
+    // border,
   },
 });
 
 const AppBarTab = ({ label, path, customFeature, user }) => {
   const navigate = useNavigate();
+  const currentPath = useLocation();
+
   return (
     <Pressable
       onPress={async () => {
         // console.log("pressed", path);
         customFeature ? await customFeature() : null;
-        navigate(path);
+        path ? navigate(path) : null;
       }}
-      style={({ pressed }) => [styles.tab, pressed && styles.pressed]}
+      style={({ pressed }) => [
+        styles.tab,
+        pressed && styles.pressed,
+        path === currentPath.pathname && styles.activeTab,
+      ]}
     >
       <Text
         style={{
