@@ -50,8 +50,8 @@ const theme = {
     bold: "700",
   },
   formContainer: {
-    padding: 16,
-    gap: 10,
+    marginTop: 8,
+    gap: 4,
   },
 };
 

@@ -44,13 +44,13 @@ const ReviewItem = ({ data, refetch }) => {
           </Text>
         </View>
         <View style={styles.detailsContainer}>
-          <Text variant="titleMedium">
+          <Text variant="titleMedium" style={{ fontWeight: "bold" }}>
             {/* if repo name exists then it shows it instead of username in the my reviews component */}
             {data.repository?.fullName
               ? data.repository.fullName
               : data.user.username}
           </Text>
-          <Text variant="labelMedium" style={{ marginBottom: 4 }}>
+          <Text variant="labelLarge" style={{ marginBottom: 4 }}>
             {date}
           </Text>
           <Text>{data.text}</Text>

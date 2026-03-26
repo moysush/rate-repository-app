@@ -22,15 +22,17 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <AppBar />
-      <Routes>
-        <Route path="/" element={<RepositoryList />} />
-        <Route path="/repositories/:id" element={<SingleRepositoryItem />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/create-review" element={<CreateReview />} />
-        <Route path="/reviews" element={<MyReviews />} />
-        {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
-      </Routes>
+      <View style={{ paddingHorizontal: 8, flex: 1 }}>
+        <Routes>
+          <Route path="/" element={<RepositoryList />} />
+          <Route path="/repositories/:id" element={<SingleRepositoryItem />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/create-review" element={<CreateReview />} />
+          <Route path="/reviews" element={<MyReviews />} />
+          {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+        </Routes>
+      </View>
     </View>
   );
 };

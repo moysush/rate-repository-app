@@ -10,7 +10,7 @@ import useRepository from "../../hooks/useRepository";
 
 const RepositoryInfo = ({ data }) => {
   return (
-    <View style={{ marginVertical: 8 }}>
+    <View style={{ marginTop: 8 }}>
       <RepositoryItem data={data}>
         <Button
           onPress={() => Linking.openURL(data.url)}

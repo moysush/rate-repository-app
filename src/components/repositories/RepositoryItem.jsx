@@ -28,7 +28,7 @@ const RepositoryItem = ({ data, children }) => {
       gap: 16,
     },
     detailsContainer: {
-      gap: 8,
+      gap: 4,
       flex: 1,
     },
     statsContainer: {
@@ -58,9 +58,11 @@ const RepositoryItem = ({ data, children }) => {
             source={{ uri: data.ownerAvatarUrl }}
           />
           <View style={styles.detailsContainer}>
-            <Text variant="titleMedium">{data.fullName}</Text>
-            <Text variant="labelMedium">{data.description}</Text>
-            <Chip style={styles.language}>
+            <Text variant="titleMedium" style={{ fontWeight: "bold" }}>
+              {data.fullName}
+            </Text>
+            <Text variant="labelLarge">{data.description}</Text>
+            <Chip style={[styles.language, { marginTop: 8 }]}>
               <Text style={{ color: paperTheme.colors.onPrimary }}>
                 {data.language}
               </Text>
@@ -74,10 +76,10 @@ const RepositoryItem = ({ data, children }) => {
               alignItems: "center",
             }}
           >
-            <Text variant="titleMedium">
+            <Text variant="titleMedium" style={{ fontWeight: "bold" }}>
               {formatThousands(data.stargazersCount)}
             </Text>
-            <Text variant="labelMedium">Stars</Text>
+            <Text variant="labelLarge">Stars</Text>
           </View>
           <View
             style={{
@@ -85,10 +87,10 @@ const RepositoryItem = ({ data, children }) => {
               alignItems: "center",
             }}
           >
-            <Text variant="titleMedium">
+            <Text variant="titleMedium" style={{ fontWeight: "bold" }}>
               {formatThousands(data.forksCount)}
             </Text>
-            <Text variant="labelMedium">Forks</Text>
+            <Text variant="labelLarge">Forks</Text>
           </View>
           <View
             style={{
@@ -96,10 +98,10 @@ const RepositoryItem = ({ data, children }) => {
               alignItems: "center",
             }}
           >
-            <Text variant="titleMedium">
+            <Text variant="titleMedium" style={{ fontWeight: "bold" }}>
               {formatThousands(data.reviewCount)}
             </Text>
-            <Text variant="labelMedium">Reviews</Text>
+            <Text variant="labelLarge">Reviews</Text>
           </View>
           <View
             style={{
@@ -107,10 +109,10 @@ const RepositoryItem = ({ data, children }) => {
               alignItems: "center",
             }}
           >
-            <Text variant="titleMedium">
+            <Text variant="titleMedium" style={{ fontWeight: "bold" }}>
               {formatThousands(data.ratingAverage)}
             </Text>
-            <Text variant="labelMedium">Rating</Text>
+            <Text variant="labelLarge">Rating</Text>
           </View>
         </View>
         <View>{children}</View>

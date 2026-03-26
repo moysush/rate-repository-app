@@ -12,6 +12,7 @@ const DeleteReview = ({ data, refetch }) => {
     buttonsContainer: {
       flexDirection: "row",
       gap: 16,
+      marginTop: 8,
     },
   });
 

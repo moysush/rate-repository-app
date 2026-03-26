@@ -13,6 +13,7 @@ const MyReviews = () => {
     <FlatList
       data={reviewNodes}
       renderItem={({ item }) => <ReviewItem data={item} refetch={refetch} />}
+      style={{ marginTop: 4 }}
     />
   );
 };
