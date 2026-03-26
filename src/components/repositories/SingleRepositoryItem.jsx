@@ -10,7 +10,7 @@ import useRepository from "../../hooks/useRepository";
 
 const RepositoryInfo = ({ data }) => {
   return (
-    <View style={{ marginBottom: 8 }}>
+    <View style={{ marginVertical: 8 }}>
       <RepositoryItem data={data}>
         <Button
           onPress={() => Linking.openURL(data.url)}
@@ -68,7 +68,6 @@ const SingleRepositoryItem = () => {
       renderItem={({ item }) => <ReviewItem data={item} />}
       keyExtractor={(item) => item.id}
       ListHeaderComponent={() => <RepositoryInfo data={repository} />}
-      style={{ padding: 8, marginBottom: 8 }}
       onEndReached={onEndReach}
       // onEndReachedThreshold={0.5}
     />

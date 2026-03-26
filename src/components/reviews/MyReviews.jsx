@@ -11,7 +11,6 @@ const MyReviews = () => {
 
   return (
     <FlatList
-      style={{ padding: 8 }}
       data={reviewNodes}
       renderItem={({ item }) => <ReviewItem data={item} refetch={refetch} />}
     />

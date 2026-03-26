@@ -2,7 +2,6 @@ import { StyleSheet, View } from "react-native";
 import { Route, Routes } from "react-router-native";
 import RepositoryList from "./components/repositories";
 import AppBar from "./components/AppBar";
-import theme from "./theme";
 import SignIn from "./components/SignIn";
 import SingleRepositoryItem from "./components/repositories/SingleRepositoryItem";
 import SignUp from "./components/SignUp";
@@ -12,7 +11,10 @@ import MyReviews from "./components/reviews/MyReviews";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surfaceDim,
+    // backgroundColor: theme.colors.surfaceDim,
+    maxWidth: 900,
+    alignSelf: "center",
+    width: "100%",
   },
 });
 

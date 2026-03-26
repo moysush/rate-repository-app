@@ -1,21 +1,22 @@
 import Constants from "expo-constants";
-import { StyleSheet, View, Pressable, ScrollView } from "react-native";
+import { StyleSheet, Pressable, ScrollView } from "react-native";
 import Text from "./ui/Text";
 import theme from "../theme";
 import { useLocation, useNavigate } from "react-router-native";
 import { useSignOut } from "../hooks/useSignOut";
+import { Appbar } from "react-native-paper";
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     height: 64 + Constants.statusBarHeight,
     backgroundColor: theme.colors.secondary,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    // flexDirection: "row",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
   tab: {
-    marginHorizontal: 12,
+    marginHorizontal: 8,
     // paddingHorizontal: 12,
     // paddingHorizontal: 8,
     // marginRight: 16,
@@ -55,8 +56,7 @@ const AppBarTab = ({ label, path, customFeature, user }) => {
             ? theme.colors.primaryContainer
             : theme.colors.onSecondary,
         }}
-        fontWeight="bold"
-        fontSize="subheading"
+        variant="titleMedium"
       >
         {label}
       </Text>
@@ -70,12 +70,8 @@ const AppBar = () => {
   // console.log(user?.username);
 
   return (
-    <View style={styles.container}>
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={{ padding: 8 }}
-      >
+    <Appbar.Header style={styles.container}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {/* tabs */}
         <AppBarTab label="Repositories" path="/" />
         {!user && <AppBarTab label="Sign in" path="/signin" />}
@@ -88,7 +84,7 @@ const AppBar = () => {
       </ScrollView>
       {/* profile name */}
       {user && <AppBarTab label={user?.username} user={user} />}
-    </View>
+    </Appbar.Header>
   );
 };
 

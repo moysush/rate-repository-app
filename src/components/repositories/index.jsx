@@ -22,7 +22,6 @@ export const RepositoryListContainer = ({
       data={repositoryNodes}
       renderItem={({ item }) => <RepositoryItem data={item} />}
       keyExtractor={(item) => item.id}
-      style={{ padding: 8, marginBottom: 8 }}
       ListHeaderComponent={
         <View>
           <FilteredRepositoryList

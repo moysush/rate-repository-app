@@ -1,16 +1,16 @@
-import theme from "../../theme";
 import { Alert, StyleSheet, View } from "react-native";
 import Button from "../ui/Button";
 import useDeleteReview from "../../hooks/useDeleteReview";
 import { useNavigate } from "react-router-native";
+import { useTheme } from "react-native-paper";
 
 const DeleteReview = ({ data, refetch }) => {
+  const paperTheme = useTheme();
   const [deleteReview] = useDeleteReview();
   const navigate = useNavigate();
   const styles = StyleSheet.create({
     buttonsContainer: {
       flexDirection: "row",
-      marginTop: 12,
       gap: 16,
     },
   });
@@ -31,7 +31,7 @@ const DeleteReview = ({ data, refetch }) => {
             View repository
           </Button>
           <Button
-            style={{ flex: 1, backgroundColor: theme.colors.error }}
+            style={{ flex: 1, backgroundColor: paperTheme.colors.error }}
             onPress={() =>
               Alert.alert(
                 "Delete",

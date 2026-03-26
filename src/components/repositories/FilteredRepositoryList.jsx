@@ -1,21 +1,14 @@
-import { View, TextInput, StyleSheet } from "react-native";
-import theme from "../../theme";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { View, StyleSheet } from "react-native";
 import { useDebounce } from "use-debounce";
 import { useEffect } from "react";
+import { Searchbar } from "react-native-paper";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const FilteredRepositoryList = ({ refetch, filterText, setFilterText }) => {
   const [debouncedText] = useDebounce(filterText, 500);
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: theme.colors.surfaceContainer,
-      borderRadius: 100,
-      height: 56,
-      paddingHorizontal: 16,
-      marginBottom: 8,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
+      marginVertical: 8,
     },
     search: {
       flexDirection: "row",
@@ -35,19 +28,16 @@ const FilteredRepositoryList = ({ refetch, filterText, setFilterText }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.search}>
-        <MaterialCommunityIcons name="magnify" size={18} />
-        <TextInput
-          style={{ flex: 1 }}
-          value={filterText}
-          onChangeText={(value) => handleFilter(value)}
-          placeholder="Search repository"
-        />
-      </View>
-      <MaterialCommunityIcons
-        name="close"
-        size={18}
-        onPress={() => handleFilter("")}
+      <Searchbar
+        style={{ flex: 1 }}
+        placeholder="Search repository..."
+        value={filterText}
+        onChangeText={(value) => handleFilter(value)}
+        // icon="magnify"
+        icon={(props) => <MaterialCommunityIcons name="magnify" {...props} />}
+        clearIcon={(props) => (
+          <MaterialCommunityIcons name="close" {...props} />
+        )}
       />
     </View>
   );

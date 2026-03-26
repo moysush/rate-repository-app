@@ -1,34 +1,14 @@
-import { StyleSheet, View, ScrollView, Pressable } from "react-native";
+import { StyleSheet, View, ScrollView, Platform } from "react-native";
 import Text from "../ui/Text";
-import theme from "../../theme";
+import { Chip } from "react-native-paper";
 
 const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
   const styles = StyleSheet.create({
     container: {
-      flexDirection: "row",
-      alignItems: "center",
-      gap: 16,
-    },
-    chip: {
-      backgroundColor: theme.colors.surfaceContainer,
-      //   borderWidth: 1,
-      //   borderColor: theme.colors.onSurfaceVariant,
-      paddingVertical: 4,
-      paddingHorizontal: 12,
-      borderRadius: 8,
-      marginRight: 4,
+      // flexDirection: "row",
+      // alignItems: "center",
+      // gap: 16,
       marginBottom: 8,
-    },
-    chipSelected: {
-      backgroundColor: theme.colors.primaryContainer,
-      //   borderWidth: 1,
-      //   borderColor: theme.colors.onPrimaryContainer,
-    },
-    chipText: {
-      color: theme.colors.onPrimaryContainer,
-    },
-    pressed: {
-      opacity: 0.8,
     },
   });
 
@@ -40,42 +20,36 @@ const SortedRepositoryList = ({ refetch, selectedSort, setSelectedSort }) => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Pressable
-          style={({ pressed }) => [
-            pressed && styles.pressed,
-            styles.chip,
-            selectedSort === "latest" && styles.chipSelected,
-          ]}
+        <Chip
+          selected={Platform.OS === "android" && selectedSort === "latest"}
+          showSelectedOverlay
+          style={{ marginRight: 4 }}
           onPress={() => {
             handleSorting("CREATED_AT", "DESC", "latest");
           }}
         >
           <Text style={styles.chipText}>Latest repositories</Text>
-        </Pressable>
-        <Pressable
-          style={({ pressed }) => [
-            pressed && styles.pressed,
-            styles.chip,
-            selectedSort === "highest" && styles.chipSelected,
-          ]}
+        </Chip>
+        <Chip
+          selected={Platform.OS === "android" && selectedSort === "highest"}
+          showSelectedOverlay
+          style={{ marginRight: 4 }}
           onPress={() => {
             handleSorting("RATING_AVERAGE", "DESC", "highest");
           }}
         >
           <Text style={styles.chipText}>Highest rated repositories</Text>
-        </Pressable>
-        <Pressable
-          style={({ pressed }) => [
-            pressed && styles.pressed,
-            styles.chip,
-            selectedSort === "lowest" && styles.chipSelected,
-          ]}
+        </Chip>
+        <Chip
+          selected={Platform.OS === "android" && selectedSort === "lowest"}
+          showSelectedOverlay
+          style={{ marginRight: 4 }}
           onPress={() => {
             handleSorting("RATING_AVERAGE", "ASC", "lowest");
           }}
         >
           <Text style={styles.chipText}>Lowest rated repositories</Text>
-        </Pressable>
+        </Chip>
       </ScrollView>
     </View>
   );
