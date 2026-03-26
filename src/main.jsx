@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // backgroundColor: theme.colors.surfaceDim,
-    maxWidth: 900,
+    maxWidth: 800,
     alignSelf: "center",
     width: "100%",
   },
